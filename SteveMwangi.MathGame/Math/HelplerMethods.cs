@@ -25,7 +25,7 @@ namespace Math
                 GameType = gameType,
                 Date = DateTime.UtcNow,
                 Questions = questions,
-                TimeTaken = timeTaken       
+                TimeTaken = timeTaken    
                 
             });
         }
@@ -73,7 +73,7 @@ namespace Math
                     firstNumber = random.Next(1000, 1999);
                     secondNumber = random.Next(1000, 1999);
                 }
-            }          
+            }       
 
             var result = new int[2];
             result[0] = firstNumber;

@@ -51,7 +51,6 @@
                             Environment.Exit(1);
                             break;
                     }
-
                 } while (gameOn);
             }
             else
@@ -74,7 +73,6 @@
                     default:
                         Environment.Exit(1);
                         break;
-
                 }
             }
         }

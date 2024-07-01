@@ -15,7 +15,6 @@ namespace Math
             int score = 0;
             TimeSpan startTime = DateTime.Now.TimeOfDay;
 
-
             for (int i = 0; i < questions; i++)
             {
                 var random = new Random();
@@ -109,7 +108,6 @@ namespace Math
             TimeSpan endTime = DateTime.Now.TimeOfDay;
             var timeTaken = endTime - startTime;
             Console.WriteLine($"This took you {timeTaken} to complete");
-
             HelperMethods.AddHistory(score, GameType.Subtraction, questions, timeTaken);
         }
         internal static void Multiplication(string? message, int questions, string level)

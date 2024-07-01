@@ -3,17 +3,11 @@
     internal class Model
     {
         public int Score { get; set; }
-
         public GameType GameType { get; set; }
-
         public DateTime Date { get; set; }
-
         public int Questions { get; set; }
-
         public TimeSpan TimeTaken { get; set; }
-
         public Level Level { get; set; }
-
     }
     internal enum GameType
     {
@@ -22,7 +16,6 @@
         Subtraction,
         Division
     }
-
     internal enum Level
     {
         Easy,
