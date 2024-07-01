@@ -1,12 +1,10 @@
 ﻿using Math.Models;
 
-
 namespace Math
 {
     internal class HelperMethods
     {
         static List<Model> gameHistory = new();
-
         internal static void ListHistory()
         {
             Console.Clear();
@@ -19,8 +17,6 @@ namespace Math
             Console.WriteLine("Press any key to go back to main menu");
             Console.ReadLine();
         }
-
-
         internal static void AddHistory(int score, GameType gameType, int questions, TimeSpan timeTaken)
         {
             gameHistory.Add(new Model
@@ -29,30 +25,60 @@ namespace Math
                 GameType = gameType,
                 Date = DateTime.UtcNow,
                 Questions = questions,
-                TimeTaken = timeTaken
+                TimeTaken = timeTaken       
+                
             });
         }
-
-
-        internal static int[] GetDivisionNumbers()
+        internal static string RandomNumber() {
+            string[] options = new string[] { "Multiplication", "Subtraction", "Division", "Addition" };
+            Random rand = new Random();
+            int randomNumber = rand.Next(0, 3);
+            return options[randomNumber];
+        }
+        internal static int[] GetDivisionNumbers(string level)
         {
             var random = new Random();
-            int firstNumber = random.Next(1, 99);
-            int secondNumber = random.Next(1, 99);
+            int firstNumber;
+            int secondNumber; 
 
-            while (firstNumber % secondNumber != 0)
+            if (level == "easy")
             {
                 firstNumber = random.Next(1, 99);
                 secondNumber = random.Next(1, 99);
+
+                while (firstNumber % secondNumber != 0)
+                {
+                    firstNumber = random.Next(1, 99);
+                    secondNumber = random.Next(1, 99);
+                }
             }
+            else if (level == "medium")
+            {
+                firstNumber = random.Next(100, 999);
+                secondNumber = random.Next(100, 999);
+
+                while (firstNumber % secondNumber != 0)
+                {
+                    firstNumber = random.Next(100, 999);
+                    secondNumber = random.Next(100, 999);
+                }
+            }
+            else
+            {
+                firstNumber = random.Next(1000, 1999);
+                secondNumber = random.Next(1000, 1999);
+
+                while (firstNumber % secondNumber != 0)
+                {
+                    firstNumber = random.Next(1000, 1999);
+                    secondNumber = random.Next(1000, 1999);
+                }
+            }          
 
             var result = new int[2];
             result[0] = firstNumber;
-            result[1] = secondNumber;
-
+            result[1] = secondNumber; 
             return result;
-
-        }
-
+        }       
     }
 }

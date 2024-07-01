@@ -1,11 +1,10 @@
 ﻿using Math.Models;
 
-
 namespace Math
 {
     internal class Operators
     {
-        internal static void Addition(string message, int questions)
+        internal static void Addition(string? message, int questions, string level)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -20,8 +19,20 @@ namespace Math
             for (int i = 0; i < questions; i++)
             {
                 var random = new Random();
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                if (level == "easy") {
+                    firstNumber = random.Next(1, 9);
+                    secondNumber = random.Next(1, 9);                
+                }
+                else if (level == "medium")
+                {
+                    firstNumber = random.Next(10, 99);
+                    secondNumber = random.Next(10, 99);
+                }
+                else
+                {
+                    firstNumber = random.Next(100, 999);
+                    secondNumber = random.Next(100, 999);
+                }
                 correctAnswer = firstNumber + secondNumber;
                 Console.WriteLine($"{firstNumber} + {secondNumber}");
                 string? result = Console.ReadLine();
@@ -48,11 +59,9 @@ namespace Math
             TimeSpan endTime = DateTime.Now.TimeOfDay;
             var timeTaken = endTime - startTime;
             Console.WriteLine($"This took you {timeTaken} to complete");
-
             HelperMethods.AddHistory(score, GameType.Addition, questions, timeTaken);
         }
-
-        internal static void Subtraction(string message, int questions)
+        internal static void Subtraction(string? message, int questions, string level)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -65,8 +74,22 @@ namespace Math
             for (int i = 0; i < questions; i++)
             {
                 var random = new Random();
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+
+                if (level == "easy")
+                {
+                    firstNumber = random.Next(1, 9);
+                    secondNumber = random.Next(1, 9);
+                }
+                else if (level == "medium")
+                {
+                    firstNumber = random.Next(10, 99);
+                    secondNumber = random.Next(10, 99);
+                }
+                else
+                {
+                    firstNumber = random.Next(100, 999);
+                    secondNumber = random.Next(100, 999);                }
+              
                 correctAnswer = firstNumber - secondNumber;
                 Console.WriteLine($"{firstNumber} - {secondNumber}");
                 string? result = Console.ReadLine();
@@ -89,8 +112,7 @@ namespace Math
 
             HelperMethods.AddHistory(score, GameType.Subtraction, questions, timeTaken);
         }
-
-        internal static void Multiplication(string message, int questions)
+        internal static void Multiplication(string? message, int questions, string level)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -104,8 +126,22 @@ namespace Math
             for (int i = 0; i < questions; i++)
             {
                 var random = new Random();
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
+                if (level == "easy")
+                {
+                    firstNumber = random.Next(1, 9);
+                    secondNumber = random.Next(1, 9);
+                }
+                else if (level == "medium")
+                {
+                    firstNumber = random.Next(10, 99);
+                    secondNumber = random.Next(10, 99);
+                }
+                else
+                {
+                    firstNumber = random.Next(100, 999);
+                    secondNumber = random.Next(100, 999);
+                }
+                
                 correctAnswer = firstNumber * secondNumber;
                 Console.WriteLine($"{firstNumber} * {secondNumber}");
                 string? result = Console.ReadLine();
@@ -123,13 +159,11 @@ namespace Math
                 if (i == 4) Console.WriteLine($"Game Over! your score is {score}");
             }
             TimeSpan endTime = DateTime.Now.TimeOfDay;
-            var timeTaken = endTime - startTime;
+            var timeTaken = endTime - startTime;           
             Console.WriteLine($"This took you {timeTaken} to complete");
-
             HelperMethods.AddHistory(score, GameType.Multiplication, questions, timeTaken);
         }
-
-        internal static void Division(string message, int questions)
+        internal static void Division(string? message, int questions, string level)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -137,7 +171,7 @@ namespace Math
             TimeSpan startTime = DateTime.Now.TimeOfDay;
             for (int i = 0; i < questions; i++)
             {
-                var divisionNumbers = HelperMethods.GetDivisionNumbers();
+                var divisionNumbers = HelperMethods.GetDivisionNumbers(level);
                 var firstNumber = divisionNumbers[0];
                 var secondNumber = divisionNumbers[1];
                 var correctAnswer = firstNumber / secondNumber;
@@ -161,12 +195,8 @@ namespace Math
             TimeSpan endTime = DateTime.Now.TimeOfDay;
             var timeTaken = endTime - startTime;
             Console.WriteLine($"This took you {timeTaken} to complete");
-
             HelperMethods.AddHistory(score, GameType.Division, questions, timeTaken);
-
         }
-
-
     }
 }
 

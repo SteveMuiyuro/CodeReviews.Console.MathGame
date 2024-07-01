@@ -1,5 +1,4 @@
-﻿
-namespace Math.Models
+﻿namespace Math.Models
 {
     internal class Model
     {
@@ -13,13 +12,21 @@ namespace Math.Models
 
         public TimeSpan TimeTaken { get; set; }
 
-    }
+        public Level Level { get; set; }
 
+    }
     internal enum GameType
     {
         Addition,
         Multiplication,
         Subtraction,
         Division
+    }
+
+    internal enum Level
+    {
+        Easy,
+        Medium,
+        Hard
     }
 }
